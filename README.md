@@ -14,10 +14,10 @@ On the 3rd iteration of the project, its aim changed to the integration of a boa
 The game chosen was "Boku" which is a "5-in-a-row"-like game with an hexagonal board.
 
 
-![alt text](screenshots/gameplay.png)
+![alt text](screenshots/gameplay.PNG)
 Fig1 - Top view & Theme 2 gameplay
 
-![alt text](screenshots/gameplay2.png)
+![alt text](screenshots/gameplay2.PNG)
 Fig2 - Side view & Theme 1 gameplay
 
 
