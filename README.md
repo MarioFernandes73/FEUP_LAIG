@@ -1,7 +1,7 @@
 # FEUP_LAIG
 Repository for the course "Laboratório de Aplicações com Interface Gráfica" (EIC0084) of the first semester of the third year of MIEIC in FEUP.
 
-In this repository there is only the final project which has all the functionalities of the previous 2.
+In this repository there is only the final project of the lective year 2017/2018 which has all the functionalities of the previous 2.
 
 This is a JavaScript-based course in which students are expected to learn how to create 3D environments using the services provided by the operating system, especially on the areas of communication and synchronization. 
 
