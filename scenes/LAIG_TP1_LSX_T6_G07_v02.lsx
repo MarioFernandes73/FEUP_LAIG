@@ -1,0 +1,757 @@
+<SCENE>
+
+    <!-- Initial values -->
+    <INITIALS>
+        <frustum near="0.1" far="500" />
+        <translation x="-1" y="1" z="0" />
+        <rotation axis="x" angle="0" />
+        <rotation axis="y" angle="0" />
+        <rotation axis="z" angle="0" />
+        <scale sx="0.25" sy="0.25" sz="0.25" />
+        <reference length="5" />
+    </INITIALS>
+
+
+    <!-- Illumination and clear colour -->
+    <ILLUMINATION>
+        <ambient r="0.2" g="0.2" b="0.2" a="1" />
+        <background r="0.537" g="0.812" b="0.941" a="1" />
+    </ILLUMINATION>
+
+
+    <!-- Lights -->
+    <LIGHTS>
+
+        <LIGHT id="rightLight">
+            <enable value="1" />
+            <position x="7" y="10" z="10" w="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </LIGHT>
+
+        <LIGHT id="leftLight">
+            <enable value="1" />
+            <position x="-12" y="10" z="5" w="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </LIGHT>
+
+        <LIGHT id="backLight">
+            <enable value="1" />
+            <position x="0" y="4" z="-30" w="1" />
+            <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </LIGHT>
+
+
+    </LIGHTS>
+
+    <!-- Textures -->
+    <TEXTURES>
+        <!-- TAP company logo -->
+        <TEXTURE id="tap_logo">
+            <file path="images/tap_logo.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- windows -->
+        <TEXTURE id="windows">
+            <file path="images/windows.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- flames -->
+        <TEXTURE id="flames">
+            <file path="images/flames.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- Black stripes -->
+        <TEXTURE id="black_stripes">
+            <file path="images/black_stripes.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- Red stripes -->
+        <TEXTURE id="red_stripes">
+            <file path="images/red_stripes.png" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- Tower head -->
+        <TEXTURE id="tower_head">
+            <file path="images/tower_head.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- default -->
+        <TEXTURE id="default">
+            <file path="images/default.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- red color -->
+        <TEXTURE id="red">
+            <file path="images/red.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- green color -->
+        <TEXTURE id="green">
+            <file path="images/green.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+		<!-- black color -->
+        <TEXTURE id="black">
+            <file path="images/black.png" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+		
+		<!-- grey color -->
+        <TEXTURE id="grey">
+            <file path="images/grey.png" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+		
+		<!-- white color -->
+        <TEXTURE id="white">
+            <file path="images/white.png" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+
+        <!-- white color -->
+        <TEXTURE id="black_wood">
+            <file path="images/black_wood.jpg" />
+            <amplif_factor s="1" t="1" />
+        </TEXTURE>
+		
+    </TEXTURES>
+
+
+    <MATERIALS>
+        <!-- White material -->
+        <MATERIAL id="whiteMaterial">
+            <shininess value="1" />
+            <specular r="1" g="1" b="1" a="1" />
+            <diffuse r="1.0" g="1" b="1" a="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1" />
+            <emission r="0.0" g="0.0" b="0.0" a="1" />
+        </MATERIAL>
+
+        <!-- Red material -->
+        <MATERIAL id="redMaterial">
+            <shininess value="1" />
+            <specular r="1" g="1" b="1" a="1" />
+            <diffuse r="1.0" g="0" b="0" a="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1" />
+            <emission r="0.0" g="0.0" b="0.0" a="1" />
+        </MATERIAL>
+
+        <!-- Green material -->
+        <MATERIAL id="greenMaterial">
+            <shininess value="1" />
+            <specular r="1" g="1" b="1" a="1" />
+            <diffuse r="0" g="1.0" b="0" a="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1" />
+            <emission r="0.0" g="0.0" b="0.0" a="1" />
+        </MATERIAL>
+
+        <!-- Yellow material -->
+        <MATERIAL id="yellowMaterial">
+            <shininess value="1" />
+            <specular r="1" g="1" b="1" a="1" />
+            <diffuse r="1.0" g="1.0" b="0" a="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1" />
+            <emission r="0.0" g="0.0" b="0.0" a="1" />
+        </MATERIAL>
+
+        <!-- Black material -->
+        <MATERIAL id="blackMaterial">
+            <shininess value="1" />
+            <specular r="1" g="1" b="1" a="1" />
+            <diffuse r="0" g="0" b="0" a="1" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1" />
+            <emission r="0.0" g="0.0" b="0.0" a="1" />
+        </MATERIAL>
+
+        <!-- A default material -->
+        <MATERIAL id="defaultMaterial">
+            <shininess value="1" />
+            <specular r="0.0" g="0.0" b="0.0" a="1" />
+            <diffuse r="0.4" g="0.4" b="0.4" a="1" />
+            <ambient r="0.4" g="0.4" b="0.4" a="1" />
+            <emission r="0.0" g="0.0" b="0.0" a="1" />
+        </MATERIAL>
+
+    </MATERIALS>
+
+
+    <ANIMATIONS>
+        <!-- podem existir zero ou mais nós "animation" -->
+        <!-- speed: velocidade LINEAR da animação -->
+        <!-- type: pode ter valor "linear", "circular", "bezier" ou “combo”;
+na animação circular os angulos são em graus -->
+
+        <ANIMATION id="linear1" speed="1" type="linear">
+            <controlpoint xx="0" yy="0" zz="0" />
+            <controlpoint xx="3" yy="0" zz="1" />
+            <controlpoint xx="5" yy="0" zz="0" />
+        </ANIMATION>
+		
+		<ANIMATION id="linear2" speed="1" type="linear">
+            <controlpoint xx="1" yy="0" zz="1" />
+            <controlpoint xx="4" yy="0" zz="1" />
+            <controlpoint xx="4" yy="0" zz="4" />
+        </ANIMATION>
+
+		<ANIMATION id="circular1" speed="0.5" type="circular"
+			centerx="0" centery="0" centerz="-3"
+			radius="3" startang="270" rotang="90"
+		/>
+		
+		<ANIMATION id="circular2" speed="0.5" type="circular"
+			centerx="-4" centery="0" centerz="0"
+			radius="4" startang="0" rotang="580"
+		/>
+		
+        <ANIMATION id="bezier1" speed="5" type="bezier">
+            <controlpoint xx="0" yy="0" zz="0" />
+            <!-- P1 -->
+            <controlpoint xx="0" yy="5.0" zz="3" />
+            <!-- P2 -->
+            <controlpoint xx="0" yy="10" zz="4" />
+            <!-- P3 -->
+            <controlpoint xx="0" yy="15" zz="20" />
+            <!-- P4 -->
+        </ANIMATION>
+		
+		<ANIMATION id="bezier2" speed="0.5" type="bezier">
+            <controlpoint xx="1" yy="1" zz="1" />
+            <!-- P1 -->
+            <controlpoint xx="2" yy="2" zz="0" />
+            <!-- P2 -->
+            <controlpoint xx="0" yy="3" zz="-3" />
+            <!-- P3 -->
+            <controlpoint xx="-3" yy="4" zz="0" />
+            <!-- P4 -->
+        </ANIMATION>
+		
+		<ANIMATION id="comboanim1" type="combo">
+            <!-- pode ser repetida para -->
+            <!-- várias animações -->
+            <!-- a próxima instrução deve existir pelo menos uma vez
+        com id a referir-se a uma animação definida acima -->
+            <!-- as animacoes devem ser executadas sequencialmente
+        pela ordem com que sao declaradas -->
+            <SPANREF id="linear1" />
+            <SPANREF id="circular1" />
+			<SPANREF id="linear2" />
+        </ANIMATION>
+		
+        <ANIMATION id="comboanim2" type="combo">
+            <SPANREF id="bezier1" />
+			<SPANREF id="bezier2" />
+			<SPANREF id="circular2" />
+        </ANIMATION>
+		
+    </ANIMATIONS>
+
+
+    <!-- The leaves -->
+    <LEAVES>
+    </LEAVES>
+
+
+    <!-- The nodes -->
+    <NODES>
+
+        <ROOT id="project" />
+
+        <!-- The root node -->
+        <NODE id="project">
+            <MATERIAL id="defaultMaterial" />
+            <TEXTURE id="null" />
+
+            <DESCENDANTS>
+                <NODEREF id="airplane" />
+                <NODEREF id="table" />
+                <NODEREF id="hexagonalBoard" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Table -->
+        <NODE id="table" scene="2">
+            <MATERIAL id="whiteMaterial" />
+            <TEXTURE id="black_wood" />
+
+            <TRANSLATION x="-5" y="-1" z="-20" />
+            <SCALE sx="1" sy="1" sz="1" />
+            <ROTATION axis="x" angle="90" />
+
+            <DESCENDANTS>
+                <NODEREF id="tableLeaf" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <NODE id="tableLeaf" >
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <DESCENDANTS>
+                <LEAF type="cylinder" args="10 60 60 10 50 1 1" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- The airplane node -->
+        <NODE id="airplane" scene="1">
+            <MATERIAL id="whiteMaterial" />
+            <TEXTURE id="default" />
+
+            <TRANSLATION x="-40" y="3" z="-10" />
+            <SCALE sx="0.8" sy="1" sz="1" />
+
+            <DESCENDANTS>
+                <NODEREF id="body" />
+                <NODEREF id="wingSet" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Airplane body -->
+        <NODE id="body">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <DESCENDANTS>
+                <NODEREF id="frontBody" />
+                <NODEREF id="midBody" />
+                <NODEREF id="backBody" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Airplane front part -->
+        <NODE id="frontBody">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <TRANSLATION x="0" y="0" z="8" />
+
+            <DESCENDANTS>
+                <NODEREF id="frontCone" />
+                <NODEREF id="conePropellersAttacher" />
+                <NODEREF id="frontPropellerSet" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Front cone -->
+        <NODE id="frontCone">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <SCALE sx="1" sy="1" sz="1.5" />
+
+            <DESCENDANTS>
+                <LEAF type="sphere" args="1 20 20" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Cone that attaches the front propellers to the airplane body -->
+        <NODE id="conePropellersAttacher">
+            <MATERIAL id="null" />
+            <TEXTURE id="black_stripes" />
+
+            <TRANSLATION x="0" y="0" z="1.5" />
+            <SCALE sx="1" sy="1" sz="2.5" />
+
+            <DESCENDANTS>
+                <LEAF type="sphere" args="0.1 20 20" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Front propellers -->
+        <NODE id="frontPropellerSet">
+            <MATERIAL id="null" />
+            <TEXTURE id="red" />
+
+            <TRANSLATION x="0" y="0" z="1.6" />
+
+            <DESCENDANTS>
+                <NODEREF id="topFrontPropeller" />
+                <NODEREF id="leftFrontPropeller" />
+                <NODEREF id="rightFrontPropeller" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Top front propeller -->
+        <NODE id="topFrontPropeller">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="0" />
+
+            <DESCENDANTS>
+                <NODEREF id="propellerModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Left front propeller -->
+        <NODE id="leftFrontPropeller">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="120" />
+
+            <DESCENDANTS>
+                <NODEREF id="propellerModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Right front propeller -->
+        <NODE id="rightFrontPropeller">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="240" />
+
+            <DESCENDANTS>
+                <NODEREF id="propellerModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Propeller model-->
+        <NODE id="propellerModel">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="y" angle="30" />
+            <TRANSLATION x="0" y="0.25" z="0" />
+            <SCALE sx="0.35" sy="0.55" sz="0.08" />
+
+            <DESCENDANTS>
+                <LEAF type="sphere" args="0.5 20 20" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- The aiplane centre body -->
+        <NODE id="midBody">
+            <MATERIAL id="null" />
+            <TEXTURE id="windows" />
+
+            <TRANSLATION x="0" y="0" z="2" />
+
+            <DESCENDANTS>
+                <LEAF type="cylinder" args="6 1 1 20 20 1 1" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Airplane back part -->
+        <NODE id="backBody">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <TRANSLATION x="0" y="0" z="2" />
+            <ROTATION axis="x" angle="180" />
+
+            <DESCENDANTS>
+                <NODEREF id="backCone" />
+                <NODEREF id="backWingSet" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Back cone -->
+        <NODE id="backCone">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <SCALE sx="1" sy="1" sz="2" />
+
+            <DESCENDANTS>
+                <LEAF type="sphere" args="1 20 20" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Back wing set -->
+        <NODE id="backWingSet">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <TRANSLATION x="0" y="0" z="1" />
+
+            <DESCENDANTS>
+                <NODEREF id="topBackWing" />
+                <NODEREF id="leftBackWing" />
+                <NODEREF id="rightBackWing" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Top back wing -->
+        <NODE id="topBackWing">
+            <MATERIAL id="yellowMaterial" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="0" />
+            <SCALE sx="1" sy="1" sz="1" />
+
+            <DESCENDANTS>
+                <NODEREF id="backWingModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Left back wing -->
+        <NODE id="leftBackWing">
+            <MATERIAL id="greenMaterial" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="90" />
+            <SCALE sx="1" sy="1" sz="1" />
+
+            <DESCENDANTS>
+                <NODEREF id="backWingModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Right back wing -->
+        <NODE id="rightBackWing">
+            <MATERIAL id="redMaterial" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="270" />
+            <SCALE sx="1" sy="1" sz="1" />
+
+            <DESCENDANTS>
+                <NODEREF id="backWingModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Back wing model -->
+        <NODE id="backWingModel">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <SCALE sx="0.2" sy="1" sz="1" />
+            <ROTATION axis="x" angle="90" />
+
+            <DESCENDANTS>
+                <LEAF type="cylinder" args="2 1 0.7 20 20 1 1" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Main side wings -->
+        <NODE id="wingSet">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <TRANSLATION x="0" y="0" z="5" />
+
+            <DESCENDANTS>
+                <NODEREF id="leftWing" />
+                <NODEREF id="rightWing" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Left main wing -->
+        <NODE id="leftWing">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="180" />
+            <ROTATION axis="y" angle="90" />
+
+            <DESCENDANTS>
+                <NODEREF id="wingModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Right main wing -->
+        <NODE id="rightWing">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="y" angle="90" />
+
+            <DESCENDANTS>
+                <NODEREF id="wingModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Main wing model, it constists of the wing structure and engine-->
+        <NODE id="wingModel">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <SCALE sx="1.7" sy="1.7" sz="1.7" />
+
+            <DESCENDANTS>
+                <NODEREF id="wingStructure" />
+                <NODEREF id="wingEngine" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Main wing structure -->
+        <NODE id="wingStructure">
+            <MATERIAL id="null" />
+            <TEXTURE id="tap_logo" />
+
+            <SCALE sx="1" sy="0.05" sz="1" />
+
+            <DESCENDANTS>
+                <LEAF type="cylinder" args="4 1 0.75 20 20 1 1" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Main wing engine -->
+        <NODE id="wingEngine">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <TRANSLATION x="1" y="0" z="2" />
+            <ROTATION axis="y" angle="-90" />
+
+            <DESCENDANTS>
+                <NODEREF id="propellersSupport" />
+                <NODEREF id="enginePropellersAttacher" />
+                <NODEREF id="enginePropellerSet" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Structure that supports the propeller set -->
+        <NODE id="propellersSupport">
+            <MATERIAL id="null" />
+            <TEXTURE id="flames" />
+
+            <DESCENDANTS>
+                <LEAF type="cylinder" args="2 0.25 0.25 20 20 1 1" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Structure that attaches the propellers to the support -->
+        <NODE id="enginePropellersAttacher">
+            <MATERIAL id="null" />
+            <TEXTURE id="black_stripes" />
+
+            <TRANSLATION x="0" y="0" z="2.03" />
+
+            <DESCENDANTS>
+                <LEAF type="sphere" args="0.05 20 20" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Engine propellers -->
+        <NODE id="enginePropellerSet">
+            <MATERIAL id="null" />
+            <TEXTURE id="green" />
+
+            <TRANSLATION x="0" y="0" z="2.05" />
+
+            <DESCENDANTS>
+                <NODEREF id="topPropeller" />
+                <NODEREF id="leftPropeller" />
+                <NODEREF id="rightPropeller" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Top engine propeller -->
+        <NODE id="topPropeller">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="0" />
+
+            <DESCENDANTS>
+                <NODEREF id="enginePropellerModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Left engine propeller -->
+        <NODE id="leftPropeller">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="120" />
+
+            <DESCENDANTS>
+                <NODEREF id="enginePropellerModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Right engine propeller -->
+        <NODE id="rightPropeller">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <ROTATION axis="z" angle="240" />
+
+            <DESCENDANTS>
+                <NODEREF id="enginePropellerModel" />
+            </DESCENDANTS>
+
+        </NODE>
+
+        <!-- Engine propeller model -->
+        <NODE id="enginePropellerModel">
+            <MATERIAL id="null" />
+            <TEXTURE id="null" />
+
+            <TRANSLATION x="0" y="0.1" z="0" />
+            <SCALE sx="0.1" sy="0.2" sz="0.03" />
+
+            <DESCENDANTS>
+                <LEAF type="sphere" args="0.5 20 20" />
+            </DESCENDANTS>
+
+        </NODE>
+		
+		<NODE id="hexagonalBoard">
+            <MATERIAL id="null" />
+			<TEXTURE id="null" />
+			
+			<TRANSLATION x="-4" y="0" z="-10" />
+			<SCALE sx="3" sy="1" sz="3" />
+			
+            <DESCENDANTS>
+                <LEAF type="board" />
+            </DESCENDANTS>
+        </NODE>
+		
+		
+		
+    </NODES>
+
+
+
+</SCENE>

@@ -1,4 +1,6 @@
 var DEGREE_TO_RAD = Math.PI / 180;
+var FPS = 10;
+var INTERMITTENT_SHADING = 0;
 
 /**
  * XMLscene class, representing the scene that is to be rendered.
@@ -10,6 +12,11 @@ function XMLscene(interface) {
     this.interface = interface;
 
     this.lightValues = {};
+	
+	this.currSelectableID = 'not defined';
+    this.currShaderIndex = 0;
+	this.saturatedColor = 0;
+    this.wireframe = false;
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -31,6 +38,39 @@ XMLscene.prototype.init = function(application) {
     this.gl.depthFunc(this.gl.LEQUAL);
     
     this.axis = new CGFaxis(this);
+    
+    this.setUpdatePeriod(1000/FPS);
+
+    this.shaders=[
+		new CGFshader(this.gl, "shaders/uScale.vert", "shaders/varyingSaturation.frag")
+	];
+}
+
+XMLscene.prototype.update = function(currTime) {
+	switch(this.currShaderIndex)
+	{
+		case INTERMITTENT_SHADING:
+			var x = this.f(currTime % 1001);
+			this.shaders[INTERMITTENT_SHADING].setUniformsValues({timeFactor: x, saturatedComponent : this.saturatedColor});
+			break;
+	}
+}
+
+XMLscene.prototype.f = function(x) {
+	/*
+	x      return     
+	1000   0
+	500    1
+	0      0*/
+	if(x <= 500)
+		return x/500;
+	if(x <= 1000 && x > 500)
+		return 1 - (x-500)/500;
+}
+
+XMLscene.prototype.toggleWireframe=function()
+{
+	this.wireframe = !this.wireframe;
 }
 
 /**
@@ -53,7 +93,7 @@ XMLscene.prototype.initLights = function() {
             this.lights[i].setDiffuse(light[3][0], light[3][1], light[3][2], light[3][3]);
             this.lights[i].setSpecular(light[4][0], light[4][1], light[4][2], light[4][3]);
             
-            this.lights[i].setVisible(true);
+            this.lights[i].setVisible(false);
             if (light[0])
                 this.lights[i].enable();
             else
@@ -71,7 +111,7 @@ XMLscene.prototype.initLights = function() {
  * Initializes the scene cameras.
  */
 XMLscene.prototype.initCameras = function() {
-    this.camera = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 15),vec3.fromValues(0, 0, 0));
+    this.camera = new CGFcamera(1.05,0.1,500,vec3.fromValues(-1.5, 23, -4),vec3.fromValues(-1.5, 0, -5)); //top camera
 }
 
 /* Handler called when the graph is finally loaded. 
@@ -79,6 +119,9 @@ XMLscene.prototype.initCameras = function() {
  */
 XMLscene.prototype.onGraphLoaded = function() 
 {
+	// Adds selectable node list.
+    this.interface.addSelectableList();
+	this.interface.addGameGroup();
     this.camera.near = this.graph.near;
     this.camera.far = this.graph.far;
     this.axis = new CGFaxis(this,this.graph.referenceLength);
@@ -119,13 +162,13 @@ XMLscene.prototype.display = function() {
         this.multMatrix(this.graph.initialTransforms);
 
 		// Draw axis
-		this.axis.display();
-
+		//this.axis.display();
+	
         var i = 0;
         for (var key in this.lightValues) {
             if (this.lightValues.hasOwnProperty(key)) {
                 if (this.lightValues[key]) {
-                    this.lights[i].setVisible(true);
+                    this.lights[i].setVisible(false);
                     this.lights[i].enable();
                 }
                 else {
@@ -136,7 +179,7 @@ XMLscene.prototype.display = function() {
                 i++;
             }
         }
-
+		
         // Displays the scene.
         this.graph.displayScene();
 
@@ -144,7 +187,7 @@ XMLscene.prototype.display = function() {
 	else
 	{
 		// Draw axis
-		this.axis.display();
+		//this.axis.display();
 	}
     
 
